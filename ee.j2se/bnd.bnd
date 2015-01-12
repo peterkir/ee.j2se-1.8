@@ -1,0 +1,30 @@
+version=1.8.0_40
+
+-include: ${project}/.settings/org.eclipse.jdt.core.prefs
+javac.source: ${org.eclipse.jdt.core.compiler.source}
+javac.target: ${org.eclipse.jdt.core.compiler.source}
+
+Bundle-SymbolicName: ee.j2se
+Bundle-Version: ${substring;${version};0;5}.${tstamp;yyyyMMdd-HHmmss}
+Bundle-RequiredExecutionEnvironment: JavaSE-${substring;${version};0;3}
+Bundle-Description: Contains the Java SE ${substring;${version};0;3} execution environment stubbed classes and sources
+Bundle-DocURL: https://docs.oracle.com/javase/${substring;${version};3;3}/docs/api/
+
+Implementation-Vendor: Oracle Corporation
+Implementation-Title: Java Runtime Environment
+Implementation-Version: ${version}
+Specification-Vendor: Oracle Corporation
+
+# https://docs.oracle.com/javase/8/docs/technotes/tools/windows/jdkfiles.html
+-includeresource: wrk/classes
+
+#	OSGI-OPT/src=${workspace}/javadoc.api.extraction/output/includePackageSources
+
+-outputmask ${@bsn}-${substring;${version};0;5}.jar
+
+# imports must not happen cause this is JRE rt.jar
+Import-Package: 
+
+# this list is derived from http://docs.oracle.com/javase/8/docs/api/
+Export-Package: \
+    ${cat;${workspace}/javadoc.api.extraction/output/bndPackageList}

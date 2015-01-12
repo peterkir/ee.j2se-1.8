@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/javadoc.api.extraction/src/javadoc/api/extraction/ExtractPublicJavaApi.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="javadoc.api.extraction.ExtractPublicJavaApi"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="javadoc.api.extraction"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dhttp.proxyHost=proxy-sifi.rd.corpintra.net &#13;&#10;-Dhttp.proxyPort=3128 &#13;&#10;-Dhttps.proxyHost=proxy-sifi.rd.corpintra.net &#13;&#10;-Dhttps.proxyPort=3128"/>
+</launchConfiguration>

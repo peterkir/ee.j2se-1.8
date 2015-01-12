@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project" default="prepareJDK">
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="init">
+		<property name="dirDownload" value="_download" />
+
+		<property name="dirConfig" value="../javadoc.api.extraction/output" />
+		
+		<property name="wrk" value="wrk" />
+		<property name="dirJdkJars" value="${wrk}/jdkJars" />
+		<property name="dirClasses" value="${wrk}/classes" />
+		<property name="dirSources" value="${wrk}/sources" />
+
+	</target>
+
+	<!-- ================================= 
+          target: prepareJDK              
+	
+			if your require Java source files add the depending target "extractJavaFiles"
+         ================================= -->
+	<target name="prepareJDK" depends="init, extractClassFiles">
+		<echo message="results found inside ${dirClasses} and optionally ${dirSources}" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: extractJarsFromJDK                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="extractJarsFromJDK">
+		<untar dest="${dirJdkJars}" compression="gzip">
+			<fileset dir="${dirDownload}">
+				<include name="*.tar.gz" />
+			</fileset>
+			<patternset>
+				<include name="**/jre/**/*.jar" />
+			</patternset>
+		</untar>
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: extractClassFiles                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="extractClassFiles" depends="extractJarsFromJDK">
+		<unjar dest="${dirClasses}" overwrite="false">
+			<fileset dir="${dirJdkJars}">
+				<include name="**/*.jar" />
+			</fileset>
+			<patternset>
+				<includesfile name="${dirConfig}/includePackageClasses" />
+			</patternset>
+		</unjar>
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: extractSourceJDK                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="extractSourceJDK">
+		<untar dest="${dirJdkJars}" compression="gzip">
+			<fileset dir="${dirDownload}">
+				<include name="*.tar.gz" />
+			</fileset>
+			<patternset>
+				<include name="**/src.zip" />
+			</patternset>
+		</untar>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: extractJavaFiles                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="extractJavaFiles" depends="extractSourceJDK">
+		<unzip dest="${dirSources}" overwrite="false">
+			<fileset dir="${dirdkJars}">
+				<include name="**/src.zip" />
+			</fileset>
+			<patternset>
+				<includesfile name="${dirConfig}/includePackageSources" />
+			</patternset>
+		</unzip>
+	</target>
+
+</project>
