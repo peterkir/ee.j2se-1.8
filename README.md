@@ -1,6 +1,6 @@
 # ee.j2se-1.8
 
-## How to create a java bundle from the JDK
+## How to create an OSGi build bundle from the JDK
 
 1. download into the folder "_download" the appropriate <linux_jdk>.tar.gz file from [Java 8 OpenJDK project](https://jdk8.java.net/) 
 2. execute the launch "ExtractPublicJavaApi.launch" from project "javadoc.api.extraction"
