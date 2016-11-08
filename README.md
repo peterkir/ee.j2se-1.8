@@ -9,3 +9,5 @@
 5. trigger the bnd build for "ee.j2se" (if not automatically done)
 
 6. grep the result from the ee.j2se/generated folder
+
+updated everything with J2SE 1.8 Profile from org.eclipse.osgi_3.11.1.v20160708-1632
